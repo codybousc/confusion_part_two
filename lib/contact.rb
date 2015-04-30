@@ -1,19 +1,25 @@
 class Contact
   @@contact = []
-  attr_reader :first_name, :last_name, :birth_month
+  attr_reader :name
 
-  define_method(:initialize) do |first_name, last_name, birth_month|
-      @first_name = first_name
-      @last_name = last_name
-      @birth_month = birth_month
+  define_method(:initialize) do |name|
+      @name = name
       @contact_id = @@contact.length() + (1)
+      @phone_entry = []
     end
 
     define_method(:save) do
-      @@contact.push(@first_name)
-      @@contact.push(@last_name)
-      @@contact.push(@birth_month)
+      @@contact.push(@name)
     end
+
+    define_method(:name) do
+      @name
+    end
+
+    define_method(:phone_entry) do
+      @phone_entry
+    end
+
 
     define_singleton_method(:all) do
       @@contact
@@ -28,6 +34,9 @@ class Contact
       @contact_id
     end
 
+    define_method(:add_phone_num) do |phone|
+      @phone_entry.push(phone)
+    end
 
 
   end
